@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <a href="{{route('post')}} " class="nav-item nav-link">Post</a>
-                    <a href="#" class="nav-item nav-link">Contact</a>
+                    <a href=" {{route('sim')}} " class="nav-item nav-link">Sim</a>
                 </div>
                 
                 <div class="navbar-nav ml-auto">

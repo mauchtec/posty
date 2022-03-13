@@ -51,9 +51,9 @@ Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
 /* -------------------------------------Sim cards---------------------------------------------------------------*/
 
 
-Route::get('/sim',[SimcardController::class, 'index'])->name('sim');
-Route::PUT('/update-sim/{id}',[SimcardController::class, 'updatesim']);
-Route::delete('/deletesim/{id}',[SimcardController::class, 'delete']);
-Route::get('/get-sims',[SimcardController::class, 'getsims']);
-Route::get('/get-sim/{id}',[SimcardController::class, 'getsim']);
-Route::post('/addsim',[SimcardController::class, 'store'])->name('addsim');
+Route::get('/sim',[SimcardController::class, 'index'])->name('sim')->middleware('auth');
+Route::PUT('/update-sim/{id}',[SimcardController::class, 'updatesim'])->middleware('auth');
+Route::delete('/deletesim/{id}',[SimcardController::class, 'delete'])->middleware('auth');
+Route::get('/get-sims',[SimcardController::class, 'getsims'])->middleware('auth');
+Route::get('/get-sim/{id}',[SimcardController::class, 'getsim'])->middleware('auth');
+Route::post('/addsim',[SimcardController::class, 'store'])->name('addsim')->middleware('auth');
