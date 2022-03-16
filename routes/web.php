@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SimcardController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\SiteSummeryController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +17,12 @@ use App\Http\Controllers\SimcardController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
 Route::get('/',function(){
     return view('home');
-})->name('home');
+});
+*/
+Route::get('/',[SiteSummeryController::class, 'index'])->name('home');
+
 
 Route::get('/posts',[PostController::class,'index'])
 ->middleware('auth')
@@ -51,9 +53,9 @@ Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
 /* -------------------------------------Sim cards---------------------------------------------------------------*/
 
 
-Route::get('/sim',[SimcardController::class, 'index'])->name('sim');
-Route::PUT('/update-sim/{id}',[SimcardController::class, 'updatesim']);
-Route::delete('/deletesim/{id}',[SimcardController::class, 'delete']);
-Route::get('/get-sims',[SimcardController::class, 'getsims']);
-Route::get('/get-sim/{id}',[SimcardController::class, 'getsim']);
-Route::post('/addsim',[SimcardController::class, 'store'])->name('addsim');
+Route::get('/sim',[SimcardController::class, 'index'])->name('sim')->middleware('auth');
+Route::PUT('/update-sim/{id}',[SimcardController::class, 'updatesim'])->middleware('auth');
+Route::delete('/deletesim/{id}',[SimcardController::class, 'delete'])->middleware('auth');
+Route::get('/get-sims',[SimcardController::class, 'getsims'])->middleware('auth');
+Route::get('/get-sim/{id}',[SimcardController::class, 'getsim'])->middleware('auth');
+Route::post('/addsim',[SimcardController::class, 'store'])->name('addsim')->middleware('auth');

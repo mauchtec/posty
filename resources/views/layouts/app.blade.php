@@ -27,7 +27,7 @@
       
             <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
                 <div class="navbar-nav">
-                    <a href="#" class="nav-item nav-link active">Home</a>
+                    <a href="{{url('/')}} " class="nav-item nav-link active">Home</a>
                     <a href="#" class="nav-item nav-link">Dashboard</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Services</a>
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <a href="{{route('post')}} " class="nav-item nav-link">Post</a>
-                    <a href="#" class="nav-item nav-link">Contact</a>
+                    <a href=" {{route('sim')}} " class="nav-item nav-link">Sim</a>
                 </div>
                 
                 <div class="navbar-nav ml-auto">

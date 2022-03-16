@@ -22,10 +22,10 @@ return new class extends Migration
         *'scannerserial','',
      */
     public function up()
-    {
+    {   Schema::dropIfExists('sims');
         Schema::create('sims', function (Blueprint $table) {
             $table->id();
-           $table->foreignId('posts_id')->constrained();
+           $table->foreignId('posts_id')->nullable()->constrained();
             $table->text('simserial');
             $table->text('simmsisdn');
             $table->text('simnetwork');

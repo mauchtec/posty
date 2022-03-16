@@ -125,15 +125,12 @@
                               <div class="col">
                                 <label for="sitename"><b>Site:</b></label>
                                 <select name="posts_id" id="posts_id">
+                                    <option >Select Site</option>
                                     @foreach ($sites as $site)
-      <option value="{{$site->id}}">{{$site->sitename}}</option> 
-      @endforeach
-                                    <option value="volvo">Select Site</option>
-                                    <option value="MTN">MTN</option>
-                                    <option value="Vodacom">Vodacom</option>
-                                    <option value="Afrihost">Afrihost</option>
-                                    <option value="Celc">Celc</option>
-                                    <option value="Telkom">Telkom</option>
+                                        <option value="{{$site->id}}">{{$site->sitename}}</option> 
+                                    @endforeach
+                                    
+                                    
                                   </select>
                                   </div>
                                  </div>                             
