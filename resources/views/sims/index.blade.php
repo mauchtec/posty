@@ -125,7 +125,11 @@
                               <div class="col">
                                 <label for="sitename"><b>Site:</b></label>
                                 <select name="posts_id" id="posts_id">
+<<<<<<< HEAD
                                     <option >Select Site</option>
+=======
+                                    <option value="volvo">Select Site</option>
+>>>>>>> 9b14a85e0bdb333d34e10d151c21941b30d66658
                                     @foreach ($sites as $site)
                                         <option value="{{$site->id}}">{{$site->sitename}}</option> 
                                     @endforeach
