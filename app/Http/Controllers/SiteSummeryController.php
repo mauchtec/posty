@@ -10,8 +10,8 @@ class SiteSummeryController extends Controller
     //
 
     public function index1(){
-        $data = DB::table('sims')
-      ->join('posts', 'posts.id', "=", 'sims.posts_id' )
+        $data = DB::table('posts')
+      ->join('sims', 'sims.id', "=", 'sims.posts_id' )
       ->select('sims.*', 'posts.*')
       ->get();
 

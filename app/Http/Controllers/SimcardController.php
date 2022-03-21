@@ -30,7 +30,7 @@ class SimcardController extends Controller
          ]);
 
      }else{
-      return response()->jason([
+      return response()->json([
           'status'=>404,
            'messgages'=>'student not found',
       ]);

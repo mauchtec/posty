@@ -68,10 +68,15 @@
 		<div class="table-wrapper">
 			<div class="table-title">
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-5">
 						<h2>Manage <b>Employees</b></h2>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-2">
+                            
+                        <input type="text" class="form-control" placeholder="Search" name="search" id="search" class="search">
+                     
+                </div>
+					<div class="col-sm-5">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
 						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
 					</div>
@@ -281,6 +286,40 @@
 
 
 <script>
+	$(document).ready(function () {
+		$("#search").on('keyup',  function() { 
+    var query = $(this).val();
+
+    
+ 
+     // console.log(query);
+    $.ajax({
+                  
+                    url: "{{url('searchsite')}}",
+                    data: {query:query},
+                    dataType: "json",
+                    success: function (response) {
+                        $('tbody').html("");
+                      
+                        $.each(response.messages, function (key, item) { 
+                           
+                            $('tbody').append('<tr>\
+                                 <td>'+ item.suppervisorname +'</td>\
+                                 <td>'+ item.sitename +'</td>\
+                                 <td>'+ item.suppervisoremail +'</td>\
+                                 <td>'+ item.location +'</td>\
+                                 <td>'+ item.sitenumber +'</td>\
+                                 <td><button type="button" value="'+ item.id +'" class="edit_sim btn btn-primary btn-sm">Edit</button></td>\
+                                 <td><button type="button" value="'+item.id+'" class="delete_sim btn btn-danger btn-sm">Delete</button></td>\
+                                 </tr>')
+                        });
+                        
+                        
+                    }
+                });
+  
+});
+	});
 $(document).on('click','.edit_site', function (e) {
 	e.preventDefault();
 	var site_id = $(this).val();

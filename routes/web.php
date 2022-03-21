@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\SiteSummeryController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Livesearch;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +60,5 @@ Route::delete('/deletesim/{id}',[SimcardController::class, 'delete'])->middlewar
 Route::get('/get-sims',[SimcardController::class, 'getsims'])->middleware('auth');
 Route::get('/get-sim/{id}',[SimcardController::class, 'getsim'])->middleware('auth');
 Route::post('/addsim',[SimcardController::class, 'store'])->name('addsim')->middleware('auth');
+Route::get('/search',[Livesearch::class, 'search'])->name('search')->middleware('auth');
+Route::get('/searchsite',[Livesearch::class, 'search2'])->name('searchsite')->middleware('auth');

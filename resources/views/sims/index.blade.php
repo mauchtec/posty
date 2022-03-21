@@ -6,10 +6,16 @@
 		<div class="table-wrapper">
 			<div class="table-title">
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-4">
 						<h2>Manage <b>Employees</b></h2>
+            
 					</div>
-					<div class="col-sm-6 mm">
+                    <div class="col-sm-4">
+                            
+                        <input type="text" class="form-control" placeholder="Search" name="search" id="search" class="search">
+                     
+                </div>
+					<div class="col-sm-4 mm">
 						<a href="#addSim" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Sim</span></a>
 						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
 					</div>
@@ -125,11 +131,7 @@
                               <div class="col">
                                 <label for="sitename"><b>Site:</b></label>
                                 <select name="posts_id" id="posts_id">
-<<<<<<< HEAD
-                                    <option >Select Site</option>
-=======
                                     <option value="volvo">Select Site</option>
->>>>>>> 9b14a85e0bdb333d34e10d151c21941b30d66658
                                     @foreach ($sites as $site)
                                         <option value="{{$site->id}}">{{$site->sitename}}</option> 
                                     @endforeach
@@ -332,7 +334,7 @@
                    dataType: "json",
                    
                    success: function (response) {
-                      
+                    $('#editStudentModal').modal('close');
                    }
                });
 }); 
@@ -340,7 +342,47 @@
 
 //end update
         $(document).ready(function () {
-            
+           
+$("#search").on('keyup',  function() { 
+    var query = $(this).val();
+
+    
+ 
+     // console.log(query);
+    $.ajax({
+                  
+                    url: "{{url('search')}}",
+                    data: {query:query},
+                    dataType: "json",
+                    success: function (response) {
+                        $('tbody').html("");
+                      
+                        $.each(response.messages, function (key, item) { 
+                           
+                            $('tbody').append('<tr>\
+                                <td>'+ item.id +'</td>\
+                                 <td>'+ item.sitename +'</td>\
+                                 <td>'+ item.simserial +'</td>\
+                                 <td>'+ item.simnetwork +'</td>\
+                                 <td>'+ item.simmsisdn +'</td>\
+                                 <td>'+ item.scannerserial +'</td>\
+                                 <td>'+ item.simpin +'</td>\
+                                 <td>'+ item.simpuck +'</td>\
+                                 <td>'+ item.simtype +'</td>\
+                                 <td><button type="button" value="'+ item.id +'" class="edit_sim btn btn-primary btn-sm">Edit</button></td>\
+                                 <td><button type="button" value="'+item.id+'" class="delete_sim btn btn-danger btn-sm">Delete</button></td>\
+                                 </tr>')
+                        });
+                        
+                        
+                    }
+                });
+  
+});
+
+
+
+            /////////////////////////////////////////////////
             fetchsims();
             function fetchsims(){
                 $.ajax({

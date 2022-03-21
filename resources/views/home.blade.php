@@ -5,7 +5,7 @@
  @if ($data->count())
  @foreach ($data as $data )
  
-   <div class="col-sm-4 mb-2">
+   <div class="col-sm-3 mt-2">
        <div class="card">
          <div class="card-body">
            <h5 class="card-title">{{$data->sitename}}</h5>

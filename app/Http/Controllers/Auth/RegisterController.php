@@ -35,7 +35,7 @@ class RegisterController extends Controller
         //]);
        // or
        auth()->attempt($request->only('email','password'));
-        return view('posts.index');
+        return view('home');
 
     }
 }
